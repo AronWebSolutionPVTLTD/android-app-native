@@ -21,8 +21,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.aron.lms",
-      "versionCode": 1,
+      "package":"com.aron.lms",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -39,11 +38,6 @@
           "color": "#ffffff"
         }
       ]
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "21ee0b6d-b3a1-46ae-a992-73db23a54439"
-      }
-    }
+    ]
   }
 }
