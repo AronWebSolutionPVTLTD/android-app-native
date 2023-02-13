@@ -15,14 +15,10 @@ const ResetPassword = () => {
                 <Text style={{marginHorizontal:20,marginTop:20}}>Re-Type Password</Text>
                 <TextInput style={{ marginHorizontal: 20,marginTop:10 }} placeholder=' Confirm Password' placeholderTextColor="black" />
                 <View style={styles.lineStyle} />
-                
                 <Pressable onPress={() => navigation.navigate('Home')}>
                     <Text style={styles.text}>Change Password</Text>
                 </Pressable>
-                
-                
             </View>
-            
         </View>
     )
 }

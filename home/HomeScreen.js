@@ -7,9 +7,9 @@ const HomeScreen = () => {
   return (
     <View style={{flex: 1,
         justifyContent: "center",
-        alignItems: "center",backgroundColor:"#ff0080"}}>
-        <View style={{flexDirection:"row",justifyContent:"space-evenly",}}>
-            <View>
+        alignItems: "center",backgroundColor:"#bc8f8f",}}>
+        <View style={{flexDirection:"row",justifyContent:"space-evenly"}}>
+            <View style={{marginRight:20}}>
                 <Pressable  onPress={() => navigation.navigate('Attendence')}>
                 <Image style={{width:175,height:200}} source={require('../assets/image1.png')}/>
                 </Pressable>
@@ -20,8 +20,8 @@ const HomeScreen = () => {
                 </Pressable>
             </View>
         </View>
-        <View style={{flexDirection:"row",justifyContent:"space-evenly",marginTop:20}}>
-            <View>
+        <View style={{flexDirection:"row",justifyContent:"space-evenly",marginTop:20,}}>
+            <View style={{marginRight:20}}>
                 <Pressable onPress={() => navigation.navigate('Result')}>
                 <Image style={{width:180,height:200,}} source={require('../assets/image3.png')}/>
                 </Pressable>
@@ -35,9 +35,6 @@ const HomeScreen = () => {
     </View>
   )
 }
-
 export default HomeScreen
-
 const styles = StyleSheet.create({
-
 })

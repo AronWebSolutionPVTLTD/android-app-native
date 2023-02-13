@@ -3,7 +3,7 @@ import React from 'react'
 
 const Payment = () => {
   return (
-    <View style={{}}>
+    <View style={{backgroundColor:"#bc8f8f",flex:1}}>
       <View style={styles.container}>
         <Text style={{ marginHorizontal: 10 }}>
           Phone Pay</Text>

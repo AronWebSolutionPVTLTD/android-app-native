@@ -19,7 +19,7 @@ const SignupScreen = () => {
         // bodyFormData.append(mobile_number);
         // bodyFormData.append(password); 
         // bodyFormData.append(retype_password); 
-        fetch('http://192.168.1.53:4002/v1/user/register', {
+        fetch('http://192.168.1.47:4002/v1/user/register', {
             method: 'POST',
             headers: { 
                 'Accept': 'application/json',

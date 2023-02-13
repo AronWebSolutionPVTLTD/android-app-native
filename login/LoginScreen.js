@@ -6,7 +6,7 @@ const LoginScreen = () => {
     const navigation = useNavigation();
         const [username, setUsername] = useState('')
         const [password, setPassword] = useState('')
-        const [data, setData] = useState([])
+       
         // soni1sanga
         // 987564
         // function user(enteredText){
@@ -16,9 +16,10 @@ const LoginScreen = () => {
         // function pass(enteredText){
         //     setPassword(enteredText);
         // }
-
+ const [data, setData] = useState([])
     const login = () => {
-        fetch('http://192.168.1.53:4002/v1/user/login', {
+       
+        fetch('http://192.168.1.47:4002/v1/user/login', {
             method: 'POST',
             headers: { 
                 'Accept': 'application/json',
@@ -86,5 +87,6 @@ const styles = StyleSheet.create({
         textAlignVertical: "center",
         borderRadius: 50,
         color: 'white',
-    }
+    },
+    
 })

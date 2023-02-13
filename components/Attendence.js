@@ -24,7 +24,7 @@ const Attendence = () => {
     }
   };
   return (
-<View >
+<View style={{backgroundColor:"#bc8f8f",flex:1}}>
     <View style={styles.container}>
 
       <CalendarPicker

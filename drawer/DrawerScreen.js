@@ -10,23 +10,44 @@ import Logout from '../login/Logout';
 const Drawer = createDrawerNavigator();
 export default function DrawerScreen() {
   return (
-    <Drawer.Navigator screenOptions={{
+    <Drawer.Navigator
+    // drawerContentOptions={{
+    //   activeTintColor: 'white',
+    //   activeBackgroundColor: 'grey',
+    //   inactiveTintColor: 'blue',
+    //   inactiveBackgroundColor: 'white',
+    //   labelStyle:{
+    //     marginLeft:5
+    //   }
+    // }}
+    screenOptions={{
       drawerStyle: {
         width: Dimensions.get('window').width / 1.75,
-        backgroundColor: '#FFFFFF',
+        backgroundColor: '#bc8f8f',
+        
       },
-      headerRight:() => <Logout/>
+     drawerActiveTintColor:"white",
+      headerRight:() => <Logout/>,
     }}
-   
     >
       <Drawer.Screen options={{
       drawerIcon: () => (
-         <MaterialCommunityIcons name="facebook"
-         size={10}
-         color="red" />
+         <MaterialCommunityIcons name="view-dashboard"
+         size={25}
+         color="white" />
       ),
+    
+     
    }}  name="Dashboard" component={BottomNavigationScreen} />
-      <Drawer.Screen  name="Student Profile" component={StudentProfile} />
+      <Drawer.Screen options={{
+        
+      drawerIcon: () => (
+        
+         <MaterialCommunityIcons name="account"
+         size={25}
+         color="white" />
+      ),
+   }}  name="Student Profile" component={StudentProfile} />
     </Drawer.Navigator>
   );
 }

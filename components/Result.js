@@ -3,7 +3,7 @@ import React from 'react'
 
 const Result = () => {
   return (
-    <View style={{marginTop:10}}>
+    <View style={{padding:7,backgroundColor:"#bc8f8f",flex:1}}>
       <Text style={styles.container1}>Result</Text>
       <View style={styles.container}>
       <View style={styles.cab}>
@@ -82,7 +82,7 @@ text:{
     marginHorizontal:20,
 },
 container:{
-    marginHorizontal:10,
+    marginHorizontal:6,
     marginTop:10,
     height:470,
     borderRadius:40,
@@ -95,7 +95,7 @@ container:{
 },
 container1:{
   flexDirection:"row",
-  marginHorizontal:10,
+  marginHorizontal:6,
   height:50,
   borderRadius:54,
   elevation:4,
