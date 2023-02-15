@@ -1,28 +1,40 @@
-import { StyleSheet, Text, View, Button, TextInput, Pressable, Image } from 'react-native'
+import { StyleSheet, Text, View, TextInput, Pressable, Image } from 'react-native'
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 const LoginScreen = () => {
     const navigation = useNavigation();
         const [username, setUsername] = useState('')
+        const [error, setError] = useState('')
         const [password, setPassword] = useState('')
+        const [error2, setError2] = useState('')
        
         // soni1sanga
         // 987564
-        // function user(enteredText){
-        //     setUsername(enteredText);
-        // }
-
-        // function pass(enteredText){
-        //     setPassword(enteredText);
-        // }
+        function nameValidator(){
+            if(username ==""){
+                setError("email field can not be empty")
+            }
+            else{
+                setError("")
+            }
+           }
+           function Validator(){
+            if(password ==""){
+                setError2("password field can not be empty")
+            }
+            else{
+                setError2("")
+            }
+           }
+          
  const [data, setData] = useState([])
     const login = () => {
+      
        
-        fetch('http://192.168.1.47:4002/v1/user/login', {
+        fetch('http://192.168.100.167:4002/v1/user/login', {
             method: 'POST',
             headers: { 
-                'Accept': 'application/json',
                 'Content-Type':'application/json'
          },
          body: JSON.stringify({
@@ -31,26 +43,39 @@ const LoginScreen = () => {
             // expiresInMins: 60, // optional
           })
         })
-        .then(res => res.json())
-        .then(res => setData(res))
-        .then(console.log(data))
-        .then(console.log(data.statusCode))
-        .then((res) => {
-        if (data.statusCode == 200) {
-            navigation.navigate('Profile')
-        }
-    })
+        //shivam
+        .then(res => res.json()).then((res)=>{
+            setData(res)
+            console.log("res",res)
+        navigation.navigate("Profile")}).catch((err)=>console.log("err",err))
+
+//         .then(res => res.json())
+//         .then(res => setData(res))
+//         .then(console.log(data))
+//         .then(console.log(data.statusCode))
+//         .then((res) => {
+//         if (data.statusCode == 200) {
+//             navigation.navigate('Profile')
+//         }
+
+//    })
+//    .catch((err)=>console.log(err))
+
+  
+
     }
     return (
         <View>
             <Text style={{marginVertical:80,fontWeight:"bold",fontSize:30,textAlign:"center"}}>Login</Text>
             <View>
                 <Text style={{ marginHorizontal: 20, marginVertical: 10 }}>Username</Text>
-                <TextInput value={username} onChangeText={(username) => setUsername(username)} style={{ marginHorizontal: 20 }} placeholder='Type your Username' placeholderTextColor="black" />
+                <TextInput  onBlur={()=>nameValidator()} value={username} onChangeText={(username) => setUsername(username)} style={{ marginHorizontal: 20 }} placeholder='Type your Username' placeholderTextColor="black" />
                 <View style={styles.lineStyle} />
+                <Text style={{color:"red",textAlign:"center"}}>{error}</Text>
                 <Text style={{marginHorizontal:20,marginTop:20}}>Password</Text>
-                <TextInput value={password} onChangeText={(password) => setPassword(password)} style={{ marginHorizontal: 20,marginTop:10 }} placeholder='Type your Password' placeholderTextColor="black" />
+                <TextInput onBlur={()=>Validator()} value={password} onChangeText={(password) => setPassword(password)} style={{ marginHorizontal: 20,marginTop:10 }} placeholder='Type your Password' placeholderTextColor="black" />
                 <View style={styles.lineStyle} />
+                <Text style={{color:"red",textAlign:"center"}}>{error2}</Text>
                 <Pressable onPress={() => navigation.navigate('Forgot')}>
                <Text style={{textAlign:"right",marginRight:20}}>Forgot Password?</Text>
                </Pressable>

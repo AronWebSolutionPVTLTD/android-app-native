@@ -25,12 +25,12 @@ const Item = ({ item }) => (
 const BookScreen = () => {
   const [data, setData] = useState([])
   useEffect(() => {
-    fetch('http://192.168.1.47:4002/v1/user/getbooks', {
+    fetch('http://192.168.100.167:4002/v1/user/getbooks', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
-        'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTM5MWZmNjcxMmFmMDdiMWM1MDk2MyIsInVzZXJuYW1lIjoibmFraXRhIiwiaWF0IjoxNjc1ODYwMjM5LCJleHAiOjE2NzY0NjUwMzl9.ZY7Jtkw0sgvUcftoCAskQWgVgvH_QuH8mTAjo7G9DXY'
+        'token': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzZTlmZWIzZmQ0NDIwNDljYWRiMWJiNSIsInVzZXJuYW1lIjoibmFraXRhIiwiaWF0IjoxNjc2Mjc5NDkwLCJleHAiOjE2NzY4ODQyOTB9.QSTxYB1Sy_j1bxMMNSyR6Ll6XtJArT-UXvyXNr3oRJM'
       },
       body: JSON.stringify({
         "shortBy": "1",
@@ -39,10 +39,14 @@ const BookScreen = () => {
         "order": "1"
       })
     })
-      .then(res => res.json())
-      .then(res => setData(res))
-      .then(console.log(data))
-      .then(console.log(data.statusCode))
+      // .then(res => res.json())
+      // .then(res => setData(res))
+      // .then(console.log(data))
+      // .then(console.log(data.statusCode))
+      .then(res => res.json()).then((res)=>{
+        setData(res)
+        console.log("res",res)
+    }).catch((err)=>console.log("err",err))
   }, [])
   return (
     <SafeAreaView style={styles.container}>
@@ -58,7 +62,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor:"#bc8f8f",
-   
   },
   item: {
     flexDirection:"row",
