@@ -1,7 +1,33 @@
-import { Image, StyleSheet, Text, TextInput, View } from 'react-native'
+import { Button, Image, StyleSheet, Text, TextInput, View } from 'react-native'
 import React from 'react'
-
+import RazorpayCheckout from 'react-native-razorpay';
 const Payment = () => {
+
+  const makePayment =()=>{
+    var options = {
+      description: 'Credits towards consultation',
+      image: 'https://i.imgur.com/3g7nmJC.png',
+      currency: 'INR',
+      key: 'rzp_test_WFoCbUuM32ToLG', // Your api key
+      amount: '5000',
+      name: 'foo',
+      prefill: {
+        email: 'void@razorpay.com',
+        contact: '9191919191',
+        name: 'Razorpay Software'
+      },
+      theme: {color: '#F37254'}
+    }
+    RazorpayCheckout.open(options).then((data) => {
+      // handle success
+      alert(`Success: ${data.razorpay_payment_id}`);
+    }).catch((error) => {
+      // handle failure
+      alert(`Error: ${error.code} | ${error.description}`);
+    });
+
+  }
+
   return (
     <View style={{backgroundColor:"#bc8f8f",flex:1}}>
       <View style={styles.container}>
@@ -54,6 +80,12 @@ const Payment = () => {
       <View style={styles.container}>
         <Text style={{margin: 20}}>
           Cash On Delivery</Text>
+      </View>
+      <View style={{flex:1,justifyContent:"center",alignItems:"center"}}>
+      <Button
+      title="Make a Payment"
+      onPress={makePayment}
+      />
       </View>
     </View>
   )

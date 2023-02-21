@@ -2,6 +2,8 @@ import { StyleSheet, Text, View, Button, TextInput, Pressable, Image,ScrollView,
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { baseUrl } from '../api/apiConstants';
+
 const SignupScreen = () => {
     const navigation = useNavigation();
     const [data, setData] = useState([])
@@ -124,7 +126,7 @@ const SignupScreen = () => {
         // bodyFormData.append(mobile_number);
         // bodyFormData.append(password); 
         // bodyFormData.append(retype_password); 
-        fetch('http://192.168.100.167:4002/v1/user/register', {
+        fetch(baseUrl+'register', {
             method: 'POST',
             headers: { 
                 'Accept': 'application/json',
@@ -156,7 +158,9 @@ const SignupScreen = () => {
     .then(res => res.json()).then((res)=>{
         setData(res)
         console.log("res",res)
-    navigation.navigate("Home")}).catch((err)=>console.log("err",err))
+        if (data.statusCode == 200) {
+                     navigation.navigate('Home')
+                 }}).catch((err)=>console.log("err",err))
 
     }
     return (

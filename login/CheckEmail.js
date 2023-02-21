@@ -1,6 +1,9 @@
 import React, { useRef, useState } from "react"
 import {View, Text, TextInput, StyleSheet, Pressable} from "react-native";
 import { useNavigation } from '@react-navigation/native';
+import { baseUrl } from "../api/apiConstants";
+
+
 
 const CheckEmail =()=>{
   const navigation = useNavigation();
@@ -24,9 +27,8 @@ const CheckEmail =()=>{
     const [pin5, setPin5] = useState("")
     const [pin6, setPin6] = useState("")
 
-
     const check = () => {
-      fetch('http://192.168.1.47:4002/v1/user/verifyOtp', {
+      fetch(baseUrl+'verifyOtp', {
           method: 'POST',
           headers: { 
               'Accept': 'application/json',
@@ -50,7 +52,9 @@ const CheckEmail =()=>{
   .then(res => res.json()).then((res)=>{
     setData(res)
     console.log("res",res)
-navigation.navigate("Reset")}).catch((err)=>console.log("err",err))
+    if (data.statusCode == 200) {
+                 navigation.navigate('Reset')
+               }}).catch((err)=>console.log("err",err))
   }
 
 

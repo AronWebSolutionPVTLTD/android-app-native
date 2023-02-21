@@ -7,7 +7,7 @@
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.webp",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -21,7 +21,7 @@
       "supportsTablet": true
     },
     "android": {
-      "package": "com.aron.lms",
+      "package":"com.aron.lms",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
@@ -33,13 +33,11 @@
     "plugins": [
       [
         "expo-notifications",
-        {}
+        {
+          "icon": "./local/assets/icon.png",
+          "color": "#ffffff"
+        }
       ]
-    ],
-    "extra": {
-      "eas": {
-        "projectId": "21ee0b6d-b3a1-46ae-a992-73db23a54439"
-      }
-    }
+    ]
   }
 }

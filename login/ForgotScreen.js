@@ -2,13 +2,15 @@ import { StyleSheet, Text, View, Button, TextInput, Pressable, Image } from 'rea
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { baseUrl } from '../api/apiConstants';
+
 const ForgotScreen = () => {
     const navigation = useNavigation();
     const [data, setData] = useState([])
     const [email, setEmail] = useState('')
     
     const send = () => {
-        fetch('http://192.168.100.167:4002/v1/user/forgotPassword', {
+        fetch(baseUrl+'forgotPassword', {
             method: 'POST',
             headers: { 
                 'Accept': 'application/json',

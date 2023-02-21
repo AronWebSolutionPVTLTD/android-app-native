@@ -4,6 +4,8 @@ import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
     const navigation = useNavigation();
+//     var x = localStorage.getItem("token");
+//   console.log(x);
   return (
     <View style={{flex: 1,
         justifyContent: "center",

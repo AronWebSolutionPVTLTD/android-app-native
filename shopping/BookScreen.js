@@ -1,31 +1,27 @@
 import React, { useEffect, useState } from 'react'
 import {SafeAreaView,View,FlatList,StyleSheet,Text,StatusBar,Image,Pressable, Button} from 'react-native';
+import { baseUrl } from '../api/apiConstants';
 
 const Item = ({ item }) => (
-
-  <View style={styles.item}>
+  <View key={item.id} style={styles.item} >
     <Image style={styles.image} source={require('../assets/book.png')} />
     <View style={styles.lineStyle}/>
     <View style={{flexDirection:"column",marginLeft:15}}>
     <Text>{item.title}</Text>
     <Text style={{ color: "#fcb103" }}>&#9733;&#9733;&#9733;&#9733;</Text>
-    <View style={{flexDirection:"row",}}>
+    <View style={{flexDirection:"row",}} key={item.id}>
       <Text>${item.price}</Text>
       <View style={{marginLeft:50,backgroundColor:"red",width:70,height:25,}}>
       <Text style={{alignSelf:"center",color:'white',marginTop:1}}>Buy Now</Text>
       </View>
-      
     </View>
     </View>
-
   </View>
-
-
 );
 const BookScreen = () => {
   const [data, setData] = useState([])
   useEffect(() => {
-    fetch('http://192.168.100.167:4002/v1/user/getbooks', {
+    fetch(baseUrl+'getbooks', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',
@@ -49,11 +45,12 @@ const BookScreen = () => {
     }).catch((err)=>console.log("err",err))
   }, [])
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={styles.container} >
+      
       <FlatList
         data={data.data}
         renderItem={Item}
-        keyExtractor={item => item.id}
+        keyExtractor={item =>  item._id}
       />
     </SafeAreaView>
   );

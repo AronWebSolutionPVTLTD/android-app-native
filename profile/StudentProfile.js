@@ -1,12 +1,14 @@
 import { StyleSheet, Text, View,ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Ionicons from '@expo/vector-icons/Ionicons';
+import { baseUrl } from '../api/apiConstants';
+
 
 const StudentProfile = () => {
   const [data, setData] = useState([])
   
   useEffect(() => {
-    fetch('http://192.168.100.167:4002/v1/user/getacademic_details', {
+    fetch(baseUrl+'getacademic_details', {
       method: 'POST',
       headers: {
         'Accept': 'application/json',

@@ -2,6 +2,9 @@ import { StyleSheet, Text, View, Button, TextInput, Pressable, Image } from 'rea
 import React, { useState } from 'react'
 import { useNavigation } from '@react-navigation/native';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
+import { baseUrl } from '../api/apiConstants';
+
+
 const ResetPassword = () => {
     const navigation = useNavigation();
     const[newPassword, setNewPassword]= useState('')
@@ -9,7 +12,7 @@ const ResetPassword = () => {
     const[data, setData] = useState([])
     
     const reset = () => {
-        fetch('http://192.168.1.47:4002/v1/user/reset_password', {
+        fetch(baseUrl+'reset_password', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
@@ -22,15 +25,19 @@ const ResetPassword = () => {
             // expiresInMins: 60, // optional
           })
         })
-        .then(res => res.json())
-        .then(res => setData(res))
-        .then(console.log(data))
-        .then(console.log(data.statusCode))
-        .then((res) => {
-        if (data.statusCode == 200) {
-            navigation.navigate('Home')
-        }
-    })
+    //     .then(res => res.json())
+    //     .then(res => setData(res))
+    //     .then(console.log(data))
+    //     .then(console.log(data.statusCode))
+    //     .then((res) => {
+    //     if (data.statusCode == 200) {
+    //         navigation.navigate('Home')
+    //     }
+    // })
+    .then(res => res.json()).then((res)=>{
+        setData(res)
+        console.log("res",res)
+    navigation.navigate("Home")}).catch((err)=>console.log("err",err))
     }
 
     return (
